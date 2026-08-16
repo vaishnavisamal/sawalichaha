@@ -1,0 +1,286 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Sawali Chaha design system — crimson red, deep maroon, warm cream.
+ * All colors in oklch. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-cream: var(--cream);
+  --color-maroon: var(--maroon);
+  --color-maroon-foreground: var(--maroon-foreground);
+  --color-gold: var(--gold);
+  --font-display: "Anek Devanagari", ui-sans-serif, sans-serif;
+  --font-sans: "Mukta", ui-sans-serif, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.985 0.012 85);
+  --foreground: oklch(0.24 0.05 30);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.05 30);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.05 30);
+  --primary: oklch(0.55 0.22 28);
+  --primary-foreground: oklch(0.985 0.012 85);
+  --secondary: oklch(0.95 0.025 70);
+  --secondary-foreground: oklch(0.3 0.09 30);
+  --muted: oklch(0.95 0.02 75);
+  --muted-foreground: oklch(0.5 0.04 40);
+  --accent: oklch(0.72 0.16 55);
+  --accent-foreground: oklch(0.22 0.05 30);
+  --destructive: oklch(0.55 0.22 28);
+  --destructive-foreground: oklch(0.985 0.012 85);
+  --border: oklch(0.89 0.025 70);
+  --input: oklch(0.89 0.025 70);
+  --ring: oklch(0.55 0.22 28);
+  --cream: oklch(0.96 0.022 80);
+  --maroon: oklch(0.32 0.09 27);
+  --maroon-foreground: oklch(0.97 0.02 80);
+  --gold: oklch(0.78 0.13 75);
+
+  --gradient-hero: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--maroon) 88%, transparent) 0%,
+    color-mix(in oklab, var(--maroon) 62%, transparent) 45%,
+    color-mix(in oklab, var(--maroon) 94%, transparent) 100%
+  );
+  --gradient-warm: linear-gradient(135deg, var(--primary), var(--accent));
+  --shadow-warm: 0 18px 40px -18px color-mix(in oklab, var(--maroon) 55%, transparent);
+  --shadow-lift: 0 26px 60px -24px color-mix(in oklab, var(--maroon) 65%, transparent);
+}
+
+.dark {
+  --background: oklch(0.19 0.03 30);
+  --foreground: oklch(0.96 0.02 80);
+  --card: oklch(0.24 0.04 30);
+  --card-foreground: oklch(0.96 0.02 80);
+  --popover: oklch(0.24 0.04 30);
+  --popover-foreground: oklch(0.96 0.02 80);
+  --primary: oklch(0.62 0.2 28);
+  --primary-foreground: oklch(0.98 0.01 80);
+  --secondary: oklch(0.28 0.05 30);
+  --secondary-foreground: oklch(0.96 0.02 80);
+  --muted: oklch(0.28 0.04 30);
+  --muted-foreground: oklch(0.72 0.03 60);
+  --accent: oklch(0.72 0.16 55);
+  --accent-foreground: oklch(0.2 0.04 30);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --cream: oklch(0.28 0.04 30);
+  --maroon: oklch(0.24 0.06 27);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility hero-overlay {
+  background-image: var(--gradient-hero);
+}
+
+@utility text-gradient-warm {
+  background-image: var(--gradient-warm);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility shadow-warm {
+  box-shadow: var(--shadow-warm);
+}
+
+@utility shadow-lift {
+  box-shadow: var(--shadow-lift);
+}
+
+@utility section-rule {
+  &::after {
+    content: "";
+    display: block;
+    width: 4rem;
+    height: 3px;
+    margin-top: 0.9rem;
+    border-radius: 999px;
+    background-image: var(--gradient-warm);
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Motion — small, tasteful movement so the site feels alive.       */
+/* Everything here respects prefers-reduced-motion at the bottom.   */
+/* ---------------------------------------------------------------- */
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes float-y-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+@keyframes steam-rise {
+  0% {
+    transform: translateY(0) scaleX(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-46px) scaleX(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes ken-burns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.12) translate(-1.2%, -1.2%);
+  }
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-120%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-12deg);
+  }
+}
+
+.animate-float {
+  animation: float-y 4.5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-y-slow 6s ease-in-out infinite;
+}
+
+.animate-ken-burns {
+  animation: ken-burns 20s ease-in-out infinite alternate;
+}
+
+.animate-marquee {
+  animation: marquee-scroll 26s linear infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.steam-wisp {
+  animation: steam-rise 3.4s ease-in infinite;
+}
+
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    color-mix(in oklab, white 45%, transparent) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%) skewX(-12deg);
+  animation: shimmer-sweep 3.2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-slow,
+  .animate-ken-burns,
+  .animate-marquee,
+  .animate-fade-in-up,
+  .steam-wisp,
+  .shimmer-btn::after {
+    animation: none !important;
+  }
+}
