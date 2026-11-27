@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://sawalichaha.vercel.app/sitemap.xml
